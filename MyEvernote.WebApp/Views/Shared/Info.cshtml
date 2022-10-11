@@ -1,0 +1,47 @@
+﻿@using MyEvernote.WebApp.ViewModels
+@model InfoViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+<link href="~/Content/Login-Register.css" rel="stylesheet" />
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+@using (Html.BeginForm())
+{
+    <div class="login-box">
+        <div class="login-header">@Model.Header</div>
+        <div class="login-body">
+            <form class="form-group">
+                <div class="text-info">
+                    <h3><span class="fa fa-info-sign"></span>&nbsp;@Model.Title</h3>
+                    <br />
+                    <p class="text-justify">
+                        @foreach (string msg in Model.Items)
+                        {
+                            @msg <br>
+                        }
+                    </p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+}
+@{
+    string js = string.Empty;
+    if (Model.IsRedirecting)
+    {
+        js = "setTimeout(function () { window.location = '" +
+            Model.RedirectingUrl + " '; }," + Model.RedirectingTimeout + ");";
+    }
+}
+<script>
+    $(function () {
+        @Html.Raw(js);
+
+    });
+</script>

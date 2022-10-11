@@ -1,0 +1,65 @@
+﻿@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h3>@Model.Title Kategori Bilgileri</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <dl class="dl-horizontal">
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <p>
+            @Bootstrap.LinkButton("/Category/Edit/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")
+            @Bootstrap.LinkButton("/Category/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön")
+        </p>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+﻿.validation-summary-errors {
+    border: 1px dotted #a94442;
+    background-color: #d76663;
+    border-radius: 0px;
+}
+
+    .validation-summary-errors ul {
+        list-style-type: none;
+        padding: 5px;
+        color: #fff;
+        font-family: "vardhana",cursive;
+    }

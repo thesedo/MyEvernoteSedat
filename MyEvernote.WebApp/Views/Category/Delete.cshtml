@@ -1,0 +1,70 @@
+﻿@using MyEvernote.WebApp
+@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+        <h3>@Model.Title Kategori Bilgileri</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd style="text-align:left;font-size: medium">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt style="text-align:left;font-size: medium">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd style="text-align:left;font-size: medium">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt style="text-align:left;font-size: medium">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+
+            <dd style="text-align:left;font-size: medium">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+            <dt style="text-align:left;font-size: medium">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+
+            <dd style="text-align:left;font-size: medium">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+
+            <dt style="text-align:left;font-size: medium">
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </dt>
+
+            <dd style="text-align:left;font-size: medium">
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-10">
+                    <h4>Kategoriyi silmek istediğinizden emin misiniz?</h4>
+                </div>
+            </div>
+
+            <div class="form-actions no-color">
+                @Bootstrap.Button("danger", string.Empty, "submit", "remove", " Sil")
+                @Bootstrap.LinkButton("/Category/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön")
+            </div>
+        }
+    </div>
+</div>

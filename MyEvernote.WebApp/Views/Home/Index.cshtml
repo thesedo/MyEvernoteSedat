@@ -1,0 +1,82 @@
+﻿@using MyEvernote.Entities
+@model List<Note>
+
+@{ ViewBag.Title = "Notlar"; }
+
+
+<div class="row mt-4 mr-0">
+    <!-- Kategoriler -->
+    <div class="col-md-3">
+        @Html.Partial("_PartialCategories")
+    </div>
+
+    <div class="col-md-9">
+        <!-- Carousel -->
+        @Html.Partial("_PartialCarousel")
+
+        <!-- Notlar -->
+        <div class="row row-cols-1 row-cols-md-3">
+            @foreach (Note note in Model)
+            {
+<div class="col mb-4">
+    <div class="card">
+        <img src="https://picsum.photos/320/150?random=@(Model.IndexOf(note)%10)" class="card-img-top" alt="@note.Title">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@note.Id">@note.Title</a>
+            </h5>
+            <p class="card-text text-right">
+                <small class="text-muted">
+                    <span class="fa fa-calendar mr-1"></span>@note.ModifiedOn.ToString("dd.MM.yyyy")
+                    <span class="fa fa-clock-o ml-2 mr-1"></span>@note.ModifiedOn.ToString("HH:mm")
+                </small>
+            </p>
+            <p class="card-text">
+                @if (string.IsNullOrEmpty(note.Text) == false && note.Text.Length > 70)
+                {@(note.Text.Substring(0, 70) + "...") }
+                else
+                {
+        @note.Text}
+            </p>
+            <p class="card-text text-right">
+                <small class="text-muted">
+                    <span class="fa fa-user mr-2"></span>@note.Owner.Username<br />
+                </small>
+            </p>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="ratings">
+                        <button class="btn btn-default btn-sm" type="button" data-liked="false" data-note-id="@note.Id">
+                            <i class="fa fa-star-o like-star mr-1"></i>
+                            <span class="like-count">@note.LikeCount</span>
+                        </button>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal_comment" data-note-id="@note.Id">
+                            <span class="fa fa-comment mr-1"></span>
+                            <span>@note.Comments.Count</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@note.Id" class="btn btn-light btn-sm">Detay<i class="fa fa-info-circle ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+            }
+        </div>
+    </div>
+</div>
+
+@section footer{
+    @Html.Partial("_PartialFooter")
+}
+
+@Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
+@Bootstrap.ModalPopup(id: "modal_notedetail", title: "Not Detayı")
+
+<script src="~/Scripts/Comment.js"></script>
+<script src="~/Scripts/like.js"></script>
+<script src="~/Scripts/NoteDetail.js"></script>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<MyEvernote.Entities.EvernoteUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Kullanıcılar</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            <a href="~/EvernoteUser/Create" class="btn btn-primary">
+                <span class="fa fa-plus"></span> Yeni Kullanıcı
+            </a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsAdmin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedUsername)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                       <img src="~/img/@Html.DisplayFor(modelItem=>item.ProfileImageFilename)" class="img-circle" width="16" height="16" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAdmin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                    </td>
+                    <td>
+                        @Bootstrap.LinkButton("/EvernoteUser/Edit/" + item.Id, "warning", "btn-xs", "Düzenle", "edit", string.Empty)
+                        @Bootstrap.LinkButton("/EvernoteUser/Details/" + item.Id, "info", "btn-xs", "Ayrıntılar", "search", string.Empty)
+                        @Bootstrap.LinkButton("/EvernoteUser/Delete/" + item.Id, "danger", "btn-xs", "Sil", "trash", string.Empty)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

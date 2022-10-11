@@ -1,0 +1,111 @@
+﻿@model MyEvernote.Entities.EvernoteUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h4>@Model.Username Kullanıcı Bilgileri</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+
+            <dt style="text-align:left;font-size:medium">
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </dt>
+
+            <dd style="text-align:left;font-size:medium">
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-10">
+                    <h4>Kullanıcıyı silmek istediğinizden emin misiniz?</h4>
+                </div>
+            </div>
+
+            <div class="form-actions no-color">
+                @Bootstrap.Button("danger", string.Empty, "submit", "remove", " Sil")
+                @Bootstrap.LinkButton("/EvernoteUser/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön")
+            </div>
+        }
+    </div>
+</div>
+
+

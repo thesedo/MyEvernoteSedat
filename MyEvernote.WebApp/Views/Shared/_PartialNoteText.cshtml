@@ -1,0 +1,30 @@
+﻿@using MyEvernote.Entities
+@model Note
+
+<div class="row">
+    <div class="col-md-12 mb-2">
+        <h4>@Model.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <small class="text-muted">
+            <i class="fa fa-calendar mr-1"></i><span class="mr-2">@Model.ModifiedOn.ToString("dd.MM.yyyy")</span>
+            <i class="fa fa-clock-o mr-1"></i><span>@Model.ModifiedOn.ToString("HH:mm")</span>
+        </small>
+    </div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+    <div class="col-md-12">
+        <p class="text-justify">
+            @Model.Text
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right my-2">
+        <span class="fa fa-user"></span> @Model.Owner.Username
+    </div>
+</div>
+
