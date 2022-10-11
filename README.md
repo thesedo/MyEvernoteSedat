@@ -1,0 +1,2 @@
+# MyEvernoteSedat
+Murat Hocaya Saygılarımla
